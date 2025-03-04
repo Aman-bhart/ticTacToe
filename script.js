@@ -38,16 +38,16 @@ const checkWinner = (boxes, player) => {
   }
 };
 
-const putToken = (boxes) => {
+const putToken = (boxes, player1, player2, player1Token, player2Token) => {
   let count = 0;
   boxes.forEach((box) => {
     box.addEventListener("click", () => {
       if (count % 2 === 0) {
-        box.innerText = "X";
-        checkWinner(boxes, "X");
+        box.innerText = player1Token;
+        checkWinner(boxes, player1);
       } else {
-        box.innerText = "O";
-        checkWinner(boxes, "O");
+        box.innerText = player2Token;
+        checkWinner(boxes, player2);
       }
       box.disabled = true;
       count++;
@@ -74,7 +74,11 @@ const start = () => {
   const boxes = document.querySelectorAll(".box");
   const reset = document.querySelector(".reset");
   handleReset(reset, boxes);
-  putToken(boxes);
+  const player1 = prompt("enter player 1 Name");
+  const player1Token = prompt("select your token (X, O)").toUpperCase();
+  const player2 = prompt("enter player 2 Name");
+  const player2Token = player1Token === "X" ? "O" : "X";
+  putToken(boxes, player1, player2, player1Token, player2Token);
 };
 
 window.onload = start;
