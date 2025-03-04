@@ -1,3 +1,4 @@
+let count = 0;
 const winPatterns = [
   [0, 1, 2],
   [0, 3, 6],
@@ -18,6 +19,7 @@ const announceResult = (type, player) => {
   }
   result.classList.remove("hide");
   document.querySelector(".reset").innerText = "NEW GAME";
+  count = 0;
 };
 
 const disableAllBoxes = (boxes) => {
@@ -39,7 +41,6 @@ const checkWinner = (boxes, player) => {
 };
 
 const putToken = (boxes, player1, player2, player1Token, player2Token) => {
-  let count = 0;
   boxes.forEach((box) => {
     box.addEventListener("click", () => {
       if (count % 2 === 0) {
