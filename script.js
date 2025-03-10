@@ -55,7 +55,6 @@ const putToken = (boxes, player1, player2, player1Token, player2Token) => {
       if (count === 9) {
         announceResult("tie");
       }
-      console.log(count);
     });
   });
 };
@@ -68,6 +67,7 @@ const handleReset = (reset, boxes) => {
       box.innerText = "";
     });
     document.querySelector(".result").classList.add("hide");
+    count = 0;
   });
 };
 
